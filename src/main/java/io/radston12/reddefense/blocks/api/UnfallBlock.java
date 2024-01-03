@@ -1,9 +1,13 @@
 package io.radston12.reddefense.blocks.api;
 
+import io.radston12.reddefense.datagen.ModBlockLootTables;
 import io.radston12.reddefense.datagen.ModBlockStateProvider;
+import io.radston12.reddefense.datagen.interfaces.LootTableProviderData;
 import net.minecraft.core.Direction;
+import net.minecraft.data.loot.BlockLootSubProvider;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockBehaviour;
+import net.minecraft.world.level.storage.loot.LootTable;
 import net.minecraftforge.registries.RegistryObject;
 
 public abstract class UnfallBlock extends Block {
@@ -27,8 +31,21 @@ public abstract class UnfallBlock extends Block {
 
     public abstract void generateBlockStateProviderData(ModBlockStateProvider provider, RegistryObject<? extends Block> block);
 
-    public boolean shouldAutomaticallyGenerateProviderData () {
+    public boolean shouldAutomaticallyGenerateProviderData() {
         return true;
+    }
+
+    public boolean shouldAutomaticallyGenerateItem() {
+        return true;
+    }
+
+
+    public boolean shouldAutomaticallyGenerateLootTable() {
+        return true;
+    }
+
+    public LootTable.Builder generateLootTableProviderData(BlockLootSubProvider tables, RegistryObject<? extends Block> block, LootTableProviderData applyExplosionCondition) {
+        return null;
     }
 
     public String getTexturePath(Direction direction) {

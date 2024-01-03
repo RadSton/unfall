@@ -25,7 +25,7 @@ public class ModBlockStateProvider extends BlockStateProvider {
 
             boolean isUnfall = ModBlocks.UNFALL_BLOCKS.containsKey(key);
 
-            if(isUnfall && !ModBlocks.UNFALL_BLOCKS.get(key).get().shouldAutomaticallyGenerateProviderData()) continue;
+            if(isUnfall && !ModBlocks.UNFALL_BLOCKS.get(key).get().shouldAutomaticallyGenerateItem()) continue;
 
             simpleBlockItem(block.get(), new ModelFile.UncheckedModelFile(modLoc("block/" + key)));
 

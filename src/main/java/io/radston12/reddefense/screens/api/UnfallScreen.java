@@ -96,6 +96,13 @@ public abstract class UnfallScreen<T extends UnfallMenu> extends AbstractContain
         GUI_ELEMENTS.add(element);
     }
 
+    public <T extends GuiElement> T getGuiElement(Class<T> cls) {
+        for(GuiElement ele : GUI_ELEMENTS) {
+            if(cls.isInstance(ele)) return (T) ele;
+        }
+        return null;
+    }
+
     @Override
     public T getMenu() {
         return menu;

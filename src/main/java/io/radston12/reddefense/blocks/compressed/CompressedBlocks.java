@@ -164,7 +164,7 @@ public class CompressedBlocks {
     // TODO: needs special treatment
     // public static final RegistryObject<Block> COMPRESSED_GRASS_BLOCK = getNormalCompressedBlock("grass_block", Blocks.GRASS_BLOCK);
     //public static final RegistryObject<Block> COMPRESSED_PODZOL = getNormalCompressedBlock("podzol", Blocks.PODZOL);
-   // public static final RegistryObject<Block> COMPRESSED_MYCELIUM = getNormalCompressedBlock("mycelium", Blocks.MYCELIUM);
+    // public static final RegistryObject<Block> COMPRESSED_MYCELIUM = getNormalCompressedBlock("mycelium", Blocks.MYCELIUM);
     // public static final RegistryObject<Block> COMPRESSED_WARPED_NYLIUM = getNormalCompressedBlock("warped_nylium", Blocks.WARPED_NYLIUM);
     // public static final RegistryObject<Block> COMPRESSED_CRIMSON_NYLIUM = getNormalCompressedBlock("crimson_nylium", Blocks.CRIMSON_NYLIUM);
 
@@ -177,8 +177,6 @@ public class CompressedBlocks {
     public static final RegistryObject<Block> COMPRESSED_OBSIDIAN = getNormalCompressedBlock("obsidian", Blocks.OBSIDIAN);
 
     public static final RegistryObject<Block> COMPRESSED_CRYING_OBSIDIAN = getNormalCompressedBlock("crying_obsidian", Blocks.CRYING_OBSIDIAN);
-
-
 
 
     public static final RegistryObject<Block> COMPRESSED_DEEPSLATE = getPillarCompressedBlock("deepslate", Blocks.DEEPSLATE, true);
@@ -233,9 +231,6 @@ public class CompressedBlocks {
     public static final RegistryObject<Block> COMPRESSED_STRIPPED_BAMBOO_BLOCK = getPillarCompressedBlock("stripped_bamboo_block", Blocks.STRIPPED_BAMBOO_BLOCK);
 
 
-
-
-
     public static final RegistryObject<Block> COMPRESSED_CUT_COPPER_STAIRS = getStairCompressedBlock("cut_copper_stairs", Blocks.CUT_COPPER_STAIRS, Blocks.CUT_COPPER);
     public static final RegistryObject<Block> COMPRESSED_EXPOSED_CUT_COPPER_STAIRS = getStairCompressedBlock("exposed_cut_copper_stairs", Blocks.EXPOSED_CUT_COPPER_STAIRS, Blocks.EXPOSED_CUT_COPPER);
     public static final RegistryObject<Block> COMPRESSED_WEATHERED_CUT_COPPER_STAIRS = getStairCompressedBlock("weathered_cut_copper_stairs", Blocks.WEATHERED_CUT_COPPER_STAIRS, Blocks.WEATHERED_CUT_COPPER);
@@ -282,10 +277,9 @@ public class CompressedBlocks {
     public static final RegistryObject<Block> COMPRESSED_BLACKSTONE_STAIRS = getStairCompressedBlock("blackstone_stairs", Blocks.BLACKSTONE_STAIRS, Blocks.BLACKSTONE);
     public static final RegistryObject<Block> COMPRESSED_POLISHED_BLACKSTONE_STAIRS = getStairCompressedBlock("polished_blackstone_stairs", Blocks.POLISHED_BLACKSTONE_STAIRS, Blocks.POLISHED_BLACKSTONE);
     public static final RegistryObject<Block> COMPRESSED_POLISHED_BLACKSTONE_BRICK_STAIRS = getStairCompressedBlock("polished_blackstone_brick_stairs", Blocks.POLISHED_BLACKSTONE_BRICK_STAIRS, Blocks.POLISHED_BLACKSTONE_BRICKS);
-     public static final RegistryObject<Block> COMPRESSED_BAMBOO_STAIRS = getStairCompressedBlock("bamboo_stairs", Blocks.BAMBOO_STAIRS, Blocks.BAMBOO_PLANKS); //TODO: Caused by: java.lang.IllegalArgumentException: Texture minecraft:block/bamboo does not exist in any known resource pack
+    public static final RegistryObject<Block> COMPRESSED_BAMBOO_STAIRS = getStairCompressedBlock("bamboo_stairs", Blocks.BAMBOO_STAIRS, Blocks.BAMBOO_PLANKS); //TODO: Caused by: java.lang.IllegalArgumentException: Texture minecraft:block/bamboo does not exist in any known resource pack
     public static final RegistryObject<Block> COMPRESSED_BAMBOO_MOSAIC_STAIRS = getStairCompressedBlock("bamboo_mosaic_stairs", Blocks.BAMBOO_MOSAIC_STAIRS, Blocks.BAMBOO_MOSAIC);
     public static final RegistryObject<Block> COMPRESSED_SPRUCE_SLAB = getSlabCompressedBlock("spruce_slab", Blocks.SPRUCE_SLAB, Blocks.SPRUCE_PLANKS);
-
 
 
     public static final RegistryObject<Block> COMPRESSED_GLASS = getCompressedGlassBlock("glass", Blocks.GLASS, false);
@@ -306,7 +300,6 @@ public class CompressedBlocks {
     public static final RegistryObject<Block> COMPRESSED_GREEN_STAINED_GLASS = getCompressedStainedGlassBlock("green_stained_glass", Blocks.GREEN_STAINED_GLASS, DyeColor.GREEN);
     public static final RegistryObject<Block> COMPRESSED_RED_STAINED_GLASS = getCompressedStainedGlassBlock("red_stained_glass", Blocks.RED_STAINED_GLASS, DyeColor.RED);
     public static final RegistryObject<Block> COMPRESSED_BLACK_STAINED_GLASS = getCompressedStainedGlassBlock("black_stained_glass", Blocks.BLACK_STAINED_GLASS, DyeColor.BLACK);
-
 
 
     public static final RegistryObject<Block> COMPRESSED_WHITE_GLAZED_TERRACOTTA = getGlazedTerracottaCompressedBlock("white_glazed_terracotta", Blocks.WHITE_GLAZED_TERRACOTTA);
@@ -344,6 +337,20 @@ public class CompressedBlocks {
     public static final RegistryObject<Block> COMPRESSED_GREEN_CARPET = getCarpetCompressedBlock("green_carpet", Blocks.GREEN_CARPET, Blocks.GREEN_WOOL);
     public static final RegistryObject<Block> COMPRESSED_RED_CARPET = getCarpetCompressedBlock("red_carpet", Blocks.RED_CARPET, Blocks.RED_WOOL);
     public static final RegistryObject<Block> COMPRESSED_BLACK_CARPET = getCarpetCompressedBlock("black_carpet", Blocks.BLACK_CARPET, Blocks.BLACK_WOOL);
+
+
+    public static final RegistryObject<Block> COMPRESSED_SPRUCE_DOOR = getDoorCompressedBlock("spruce_door", Blocks.SPRUCE_DOOR);
+    public static final RegistryObject<Block> COMPRESSED_ACACIA_DOOR = getDoorCompressedBlock("acacia_door", Blocks.ACACIA_DOOR);
+    public static final RegistryObject<Block> COMPRESSED_DARK_OAK_DOOR = getDoorCompressedBlock("dark_oak_door", Blocks.DARK_OAK_DOOR);
+    public static final RegistryObject<Block> COMPRESSED_OAK_DOOR = getDoorCompressedBlock("oak_door", Blocks.OAK_DOOR);
+    public static final RegistryObject<Block> COMPRESSED_BIRCH_DOOR = getDoorCompressedBlock("birch_door", Blocks.BIRCH_DOOR);
+    public static final RegistryObject<Block> COMPRESSED_BAMBOO_DOOR = getDoorCompressedBlock("bamboo_door", Blocks.BAMBOO_DOOR);
+    public static final RegistryObject<Block> COMPRESSED_CHERRY_DOOR = getDoorCompressedBlock("cherry_door", Blocks.CHERRY_DOOR);
+    public static final RegistryObject<Block> COMPRESSED_JUNGLE_DOOR = getDoorCompressedBlock("jungle_door", Blocks.JUNGLE_DOOR);
+    public static final RegistryObject<Block> COMPRESSED_MANGROVE_DOOR = getDoorCompressedBlock("mangrove_door", Blocks.MANGROVE_DOOR);
+    public static final RegistryObject<Block> COMPRESSED_IRON_DOOR = getDoorCompressedBlock("iron_door", Blocks.IRON_DOOR);
+    public static final RegistryObject<Block> COMPRESSED_WARPED_DOOR = getDoorCompressedBlock("warped_door", Blocks.WARPED_DOOR);
+    public static final RegistryObject<Block> COMPRESSED_CRIMSON_DOOR = getDoorCompressedBlock("crimson_door", Blocks.CRIMSON_DOOR);
 
 
     public CompressedBlocks() {
@@ -404,6 +411,10 @@ public class CompressedBlocks {
 
     private static RegistryObject<Block> getCarpetCompressedBlock(String name, Block block, Block material) {
         return ModBlocks.registerUnfallBlock("compressed_" + name, () -> new CompressedCarpetBlock("compressed_" + name, block, material));
+    }
+
+    private static RegistryObject<Block> getDoorCompressedBlock(String name, Block block) {
+        return ModBlocks.registerUnfallBlock("compressed_" + name, () -> new CompressedDoorBlock("compressed_" + name, block));
     }
 
 }

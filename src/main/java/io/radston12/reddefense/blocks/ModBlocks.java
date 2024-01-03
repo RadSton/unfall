@@ -4,6 +4,7 @@ import io.radston12.reddefense.RedDefenseMod;
 import io.radston12.reddefense.blocks.api.UnfallBlock;
 import io.radston12.reddefense.blocks.compressed.CompressedBlocks;
 import io.radston12.reddefense.blocks.entities.BlockCompressor;
+import io.radston12.reddefense.blocks.entities.owned.KeypadBlock;
 import io.radston12.reddefense.item.ModItems;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
@@ -23,7 +24,8 @@ public class ModBlocks {
     public static final HashMap<String, RegistryObject<? extends Block>> BLOCKS_MAP = new HashMap<>();
     public static final HashMap<String, Supplier<UnfallBlock>> UNFALL_BLOCKS = new HashMap<>();
 
-    public static final RegistryObject<Block> TEST_BLOCK = registerBlock("test_block", () -> new BlockCompressor(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK).sound(SoundType.CHAIN)));
+    public static final RegistryObject<Block> TEST_BLOCK = registerBlock("test_block", () -> new BlockCompressor(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK).sound(SoundType.ANVIL)));
+    public static final RegistryObject<Block> KEYPAD = registerBlock("keypad", KeypadBlock::new);
 
     public static void register(IEventBus event) {
        new CompressedBlocks();

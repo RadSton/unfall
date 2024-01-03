@@ -6,6 +6,8 @@ import io.radston12.reddefense.menus.utils.CustomAcceptingSlot;
 import io.radston12.reddefense.menus.utils.MenuHelper;
 import io.radston12.reddefense.menus.utils.ResultSlotHandler;
 import io.radston12.reddefense.menus.utils.callbacks.ShouldAcceptItem;
+import io.radston12.reddefense.utils.PlayerUtils;
+import net.minecraft.util.Mth;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.AbstractContainerMenu;
@@ -13,10 +15,15 @@ import net.minecraft.world.inventory.ContainerLevelAccess;
 import net.minecraft.world.inventory.MenuType;
 import net.minecraft.world.inventory.Slot;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.level.ClipContext;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntity;
+import net.minecraft.world.phys.BlockHitResult;
+import net.minecraft.world.phys.Vec3;
 import net.minecraftforge.items.IItemHandler;
 import net.minecraftforge.items.SlotItemHandler;
+import org.apache.logging.log4j.util.PropertySource;
+import org.apache.logging.log4j.util.SystemPropertiesPropertySource;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.ArrayList;
@@ -25,11 +32,11 @@ import java.util.List;
 public class UnfallMenu extends AbstractContainerMenu {
 
     private final int slotCount;
-    private final boolean isItemMenu;
+    private boolean isItemMenu;
 
     private final Inventory inv;
     private final Player player;
-    private final BlockEntity entity;
+    private BlockEntity entity;
     private final Level level;
 
     private final List<GuiElement> GENERATED_GUI_ELEMENTS = new ArrayList<>();
@@ -41,10 +48,23 @@ public class UnfallMenu extends AbstractContainerMenu {
         this.inv = inv;
         this.player = inv.player;
         this.level = player.level();
+
         this.entity = entity;
 
         this.isItemMenu = entity == null;
     }
+
+    public void automaticallyGetEntity() {
+        BlockHitResult result = PlayerUtils.getPlayerPOVHitResult(getLevel(), getPlayer());
+        BlockEntity temp = level.getBlockEntity(result.getBlockPos());
+
+        if (temp == null) return;
+
+        this.entity = temp;
+        this.isItemMenu = false;
+
+    }
+
 
     public UnfallMenu(@Nullable MenuType<?> menuType, int containerID, int slotCount, Inventory inv) {
         this(menuType, containerID, slotCount, inv, null);
@@ -77,7 +97,7 @@ public class UnfallMenu extends AbstractContainerMenu {
         }
     }
 
-    public List<GuiElement> getGeneratedGuiElements () {
+    public List<GuiElement> getGeneratedGuiElements() {
         return GENERATED_GUI_ELEMENTS;
     }
 
@@ -88,7 +108,7 @@ public class UnfallMenu extends AbstractContainerMenu {
 
     @Override
     public boolean stillValid(Player player) {
-        if(isItemMenu) return true;
+        if (isItemMenu) return true;
         return stillValid(ContainerLevelAccess.create(level, entity.getBlockPos()), this.player, level.getBlockState(entity.getBlockPos()).getBlock());
     }
 

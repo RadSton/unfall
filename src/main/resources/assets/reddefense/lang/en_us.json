@@ -473,5 +473,16 @@
   "block.reddefense.compressed_yellow_stained_glass": "Compressed Yellow Stained Glass",
   "block.reddefense.compressed_yellow_stained_glass_pane": "Compressed Yellow Stained Glass Pane",
   "block.reddefense.compressed_yellow_terracotta": "Compressed Yellow Terracotta",
-  "block.reddefense.compressed_yellow_wool": "Compressed Yellow Wool"
+  "block.reddefense.compressed_yellow_wool": "Compressed Yellow Wool",
+
+
+  "compat.reddefense.waila.owner": "Owner: %s",
+  "config.jade.plugin_reddefense.ownable_block": "Show Owners",
+  "error.reddefense.notcompressed": "§4This block is not compressed!",
+  "error.reddefense.notyourblock": "§4This block is not yours!",
+  "block.reddefense.keypad.correct": "§2Correct",
+  "block.reddefense.keypad.incorrect": "§4Incorrect",
+  "block.reddefense.keypad.set": "§3Passcode set!",
+  "block.reddefense.keypad.notsetup": "§4This block is not setup yet",
+  "block.reddefense.keypad.setup": "§cPlease set the passcode! You will only be prompted to do this once!"
 }

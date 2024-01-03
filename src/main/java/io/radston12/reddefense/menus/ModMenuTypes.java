@@ -19,8 +19,9 @@ public class ModMenuTypes {
     public static final RegistryObject<MenuType<PortableJukeBoxMenu>> PORTABE_JUKEBOX_MENU =
             registerMenuType("portable_jukebox_menu", PortableJukeBoxMenu::new);
 
-    public static final RegistryObject<MenuType<BlockCompressingManagerMenu>> BLOCK_OWNER_MANAGER_MENU =
-            registerMenuType("block_owner_manager_menu", BlockCompressingManagerMenu::new);
+    public static final RegistryObject<MenuType<KeypadMenu>> KEYPAD =
+            registerMenuType("keypad_menu", KeypadMenu::new);
+
 
     private static <T extends AbstractContainerMenu>RegistryObject<MenuType<T>> registerMenuType(String name, IContainerFactory<T> factory) {
         return MENUS.register(name, () -> IForgeMenuType.create(factory));
