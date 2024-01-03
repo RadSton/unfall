@@ -11,8 +11,8 @@ import io.radston12.reddefense.item.ModItems;
 import io.radston12.reddefense.menus.ModMenuTypes;
 import io.radston12.reddefense.networking.UnfallPacketHandler;
 import io.radston12.reddefense.recipes.ModRecipes;
-import io.radston12.reddefense.screens.BlockCompressingManagerScreen;
 import io.radston12.reddefense.screens.BlockCompressorScreen;
+import io.radston12.reddefense.screens.KeypadScreen;
 import io.radston12.reddefense.screens.PortableJukeBoxScreen;
 import net.minecraft.client.gui.screens.MenuScreens;
 import net.minecraft.client.renderer.entity.EntityRenderers;
@@ -57,27 +57,27 @@ public class RedDefenseMod {
         modEventBus.addListener(this::commonSetup);
     }
 
-    private void commonSetup(final FMLCommonSetupEvent event)    {
+    private void commonSetup(final FMLCommonSetupEvent event) {
 
     }
 
     // You can use SubscribeEvent and let the Event Bus discover methods to call
     @SubscribeEvent
-    public void onServerStarting(ServerStartingEvent event)    {
+    public void onServerStarting(ServerStartingEvent event) {
 
     }
 
     // You can use EventBusSubscriber to automatically register all static methods in the class annotated with @SubscribeEvent
     @Mod.EventBusSubscriber(modid = MOD_ID, bus = Mod.EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
-    public static class ClientModEvents    {
+    public static class ClientModEvents {
 
         @SubscribeEvent
         public static void onClientSetup(FMLClientSetupEvent event) {
-           EntityRenderers.register(ModEntites.PLANE.get(), PlaneRenderer::new);
+            EntityRenderers.register(ModEntites.PLANE.get(), PlaneRenderer::new);
 
             MenuScreens.register(ModMenuTypes.BLOCK_COMPRESSING_MENU.get(), BlockCompressorScreen::new);
             MenuScreens.register(ModMenuTypes.PORTABE_JUKEBOX_MENU.get(), PortableJukeBoxScreen::new);
-            MenuScreens.register(ModMenuTypes.BLOCK_OWNER_MANAGER_MENU.get(), BlockCompressingManagerScreen::new);
+            MenuScreens.register(ModMenuTypes.KEYPAD.get(), KeypadScreen::new);
         }
 
 

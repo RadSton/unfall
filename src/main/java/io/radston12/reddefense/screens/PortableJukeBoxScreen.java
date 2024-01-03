@@ -1,7 +1,7 @@
 package io.radston12.reddefense.screens;
 
 import io.radston12.reddefense.RedDefenseMod;
-import io.radston12.reddefense.gui.ButtonGuiElement;
+import io.radston12.reddefense.gui.premade.TexturedButtonGuiElement;
 import io.radston12.reddefense.menus.PortableJukeBoxMenu;
 import io.radston12.reddefense.screens.api.UnfallScreen;
 import io.radston12.reddefense.sound.api.MovingSound;
@@ -16,7 +16,7 @@ public class PortableJukeBoxScreen extends UnfallScreen<PortableJukeBoxMenu> {
         super(portableJukeBoxMenu, inv, tag);
 
         addGuiElement(
-                new ButtonGuiElement(43,49, new ResourceLocation(RedDefenseMod.MOD_ID, "gui/elements/buttons/play.png"), Component.literal("Play Song"),
+                new TexturedButtonGuiElement(43,49, new ResourceLocation(RedDefenseMod.MOD_ID, "gui/elements/buttons/play.png"), Component.literal("Play Song"),
                         () -> {
                             Minecraft.getInstance().getSoundManager().stop();
                             Minecraft.getInstance().getSoundManager().queueTickingSound(new MovingSound(portableJukeBoxMenu.getSoundEventToPlay(9), inv.player));
@@ -25,7 +25,7 @@ public class PortableJukeBoxScreen extends UnfallScreen<PortableJukeBoxMenu> {
         );
 
         addGuiElement(
-                new ButtonGuiElement(112 ,49,
+                new TexturedButtonGuiElement(112 ,49,
                         new ResourceLocation(RedDefenseMod.MOD_ID, "gui/elements/buttons/stop.png"),
                         Component.literal("Stop Song"),
                         () -> Minecraft.getInstance().getSoundManager().stop()

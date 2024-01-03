@@ -1,7 +1,6 @@
 package io.radston12.reddefense.item;
 
 import io.radston12.reddefense.RedDefenseMod;
-import io.radston12.reddefense.item.custom.CompressedBlockOwnerManager;
 import io.radston12.reddefense.item.custom.CompressedBlockRemover;
 import io.radston12.reddefense.item.custom.MannerSchnitten;
 import io.radston12.reddefense.item.custom.PortableDiscPlayer;
@@ -28,8 +27,6 @@ public class ModItems {
     private static final RegistryObject<MannerSchnitten> MANNER_SCHNITTEN = registerItem("manner", () -> new MannerSchnitten());
     private static final RegistryObject<PortableDiscPlayer> PORTABLE_DISC_PLAYER = registerItem("portable_disc_player", () -> new PortableDiscPlayer());
     private static final RegistryObject<CompressedBlockRemover> COMPRESSSED_BLOCK_REMOVER = registerItem("compressed_block_remover", () -> new CompressedBlockRemover());
-    private static final RegistryObject<CompressedBlockOwnerManager> COMPRESSSED_BLOCK_OWNER_MANAGER = registerItem("compressed_block_owner_manager", () -> new CompressedBlockOwnerManager());
-
 
     public static void register(IEventBus eventBus) {
         ITEMS.register(eventBus);

@@ -1,5 +1,6 @@
 package io.radston12.reddefense.item.custom;
 
+import io.radston12.reddefense.blockentities.custom.OwnableBlockEntity;
 import io.radston12.reddefense.blocks.api.OwnableBlock;
 import io.radston12.reddefense.item.api.UnfallItem;
 import net.minecraft.core.BlockPos;
@@ -11,6 +12,7 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.ClipContext;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 
 public class CompressedBlockRemover extends UnfallItem {
@@ -28,12 +30,15 @@ public class CompressedBlockRemover extends UnfallItem {
         Block block = state.getBlock();
 
         if (block instanceof OwnableBlock) {
-            OwnableBlock ownableBlock = (OwnableBlock) block;
+            OwnableBlockEntity ownableBlock = (OwnableBlockEntity) level.getBlockEntity(pos);
 
-            level.destroyBlock(pos, true, player);
+            if(ownableBlock.isOwner(player))
+                level.destroyBlock(pos, true, player);
+            else
+                player.displayClientMessage(Component.translatable("error.reddefense.notyourblock"), true);
 
         } else
-            player.sendSystemMessage(Component.literal("[Unfall] This block is not compressed!"));
+            player.displayClientMessage(Component.translatable("error.reddefense.notcompressed"), true);
 
         return InteractionResultHolder.success(player.getItemInHand(interactionHand));
     }
