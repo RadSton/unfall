@@ -27,6 +27,10 @@ public abstract class BaseCompressedBlock extends OwnableBlock {
         return vanillaBlock;
     }
 
+    public boolean hasTint() {
+        return true;
+    }
+
     public abstract String getTextureFromSides(Direction direction);
 
     @Override

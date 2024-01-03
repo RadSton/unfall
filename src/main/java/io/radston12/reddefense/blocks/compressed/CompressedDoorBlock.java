@@ -166,6 +166,13 @@ public class CompressedDoorBlock extends BaseCompressedBlock {
 
     }
 
+    public void cylceOpen(Level lvl, BlockState state, BlockPos pos, Player player) {
+        state = state.cycle(OPEN);
+        lvl.setBlock(pos, state, 10);
+        this.playSound(lvl, pos, this.isOpen(state));
+        lvl.gameEvent(player, this.isOpen(state) ? GameEvent.BLOCK_OPEN : GameEvent.BLOCK_CLOSE, pos);
+    }
+
     @Override
     @NotNull
     public InteractionResult use(@NotNull BlockState state, Level lvl, @NotNull BlockPos pos, @NotNull Player player, @NotNull InteractionHand interactionHand, @NotNull BlockHitResult hitResult) {
@@ -173,10 +180,7 @@ public class CompressedDoorBlock extends BaseCompressedBlock {
         if (getVanillaBlock() == Blocks.IRON_DOOR)
             return super.use(state, lvl, pos, player, interactionHand, hitResult);
 
-        state = state.cycle(OPEN);
-        lvl.setBlock(pos, state, 10);
-        this.playSound(lvl, pos, this.isOpen(state));
-        lvl.gameEvent(player, this.isOpen(state) ? GameEvent.BLOCK_OPEN : GameEvent.BLOCK_CLOSE, pos);
+        cylceOpen(lvl, state, pos, player);
 
         return InteractionResult.sidedSuccess(lvl.isClientSide);
     }
@@ -267,12 +271,16 @@ public class CompressedDoorBlock extends BaseCompressedBlock {
         return false;
     }
 
+    public ResourceLocation getTexture(ModBlockStateProvider provider) {
+        return provider.blockTexture(getVanillaBlock());
+    }
+
     @Override
     public void generateBlockStateProviderData(ModBlockStateProvider provider, RegistryObject<? extends Block> block) {
 
         provider.itemModels().withExistingParent(block.getId().getPath(),
                 new ResourceLocation("item/generated")).texture("layer0",
-                provider.blockTexture(getVanillaBlock()).toString().replaceAll("block", "item"));
+                getTexture(provider).toString().replaceAll("block", "item"));
 
         VariantBlockStateBuilder variantBuilder = provider.getVariantBuilder(block.get());
         // models
@@ -287,9 +295,9 @@ public class CompressedDoorBlock extends BaseCompressedBlock {
                                 )
                         )
                         .texture("bottom",
-                                provider.blockTexture(getVanillaBlock()) + "_bottom"
+                                getTexture(provider) + "_bottom"
                         ).texture("top",
-                                provider.blockTexture(getVanillaBlock()) + "_top"
+                                getTexture(provider) + "_top"
                         )
                 );
 
@@ -303,9 +311,9 @@ public class CompressedDoorBlock extends BaseCompressedBlock {
                                 )
                         )
                         .texture("bottom",
-                                provider.blockTexture(getVanillaBlock()) + "_bottom"
+                                getTexture(provider) + "_bottom"
                         ).texture("top",
-                                provider.blockTexture(getVanillaBlock()) + "_top"
+                                getTexture(provider) + "_top"
                         )
                 );
 
@@ -319,9 +327,9 @@ public class CompressedDoorBlock extends BaseCompressedBlock {
                                 )
                         )
                         .texture("bottom",
-                                provider.blockTexture(getVanillaBlock()) + "_bottom"
+                                getTexture(provider) + "_bottom"
                         ).texture("top",
-                                provider.blockTexture(getVanillaBlock()) + "_top"
+                                getTexture(provider) + "_top"
                         )
                 );
 
@@ -335,9 +343,9 @@ public class CompressedDoorBlock extends BaseCompressedBlock {
                                 )
                         )
                         .texture("bottom",
-                                provider.blockTexture(getVanillaBlock()) + "_bottom"
+                                getTexture(provider) + "_bottom"
                         ).texture("top",
-                                provider.blockTexture(getVanillaBlock()) + "_top"
+                                getTexture(provider) + "_top"
                         )
                 );
 
@@ -351,9 +359,9 @@ public class CompressedDoorBlock extends BaseCompressedBlock {
                                 )
                         )
                         .texture("bottom",
-                                provider.blockTexture(getVanillaBlock()) + "_bottom"
+                                getTexture(provider) + "_bottom"
                         ).texture("top",
-                                provider.blockTexture(getVanillaBlock()) + "_top"
+                                getTexture(provider) + "_top"
                         )
                 );
 
@@ -367,9 +375,9 @@ public class CompressedDoorBlock extends BaseCompressedBlock {
                                 )
                         )
                         .texture("bottom",
-                                provider.blockTexture(getVanillaBlock()) + "_bottom"
+                                getTexture(provider) + "_bottom"
                         ).texture("top",
-                                provider.blockTexture(getVanillaBlock()) + "_top"
+                                getTexture(provider) + "_top"
                         )
                 );
 
@@ -383,9 +391,9 @@ public class CompressedDoorBlock extends BaseCompressedBlock {
                                 )
                         )
                         .texture("bottom",
-                                provider.blockTexture(getVanillaBlock()) + "_bottom"
+                                getTexture(provider) + "_bottom"
                         ).texture("top",
-                                provider.blockTexture(getVanillaBlock()) + "_top"
+                                getTexture(provider) + "_top"
                         )
                 );
 
@@ -399,9 +407,9 @@ public class CompressedDoorBlock extends BaseCompressedBlock {
                                 )
                         )
                         .texture("bottom",
-                                provider.blockTexture(getVanillaBlock()) + "_bottom"
+                                getTexture(provider) + "_bottom"
                         ).texture("top",
-                                provider.blockTexture(getVanillaBlock()) + "_top"
+                                getTexture(provider) + "_top"
                         )
                 );
 

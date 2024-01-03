@@ -2,7 +2,9 @@ package io.radston12.reddefense.event;
 
 import io.radston12.reddefense.RedDefenseMod;
 import io.radston12.reddefense.blocks.ModBlocks;
+import io.radston12.reddefense.blocks.compressed.BaseCompressedBlock;
 import io.radston12.reddefense.item.ModItems;
+import net.minecraft.world.entity.animal.TropicalFish;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.client.event.RegisterColorHandlersEvent;
 import net.minecraftforge.eventbus.api.EventPriority;
@@ -22,7 +24,8 @@ public class CompressedBlockRegisterColorHandlerEvent {
             }
 
             if(key.contains("compressed")) {
-                event.register((state, world, pos, tintIndex) -> CONST, ModBlocks.BLOCKS_MAP.get(key).get());
+                BaseCompressedBlock block = (BaseCompressedBlock) ModBlocks.BLOCKS_MAP.get(key).get();
+                if(block.hasTint()) event.register((state, world, pos, tintIndex) -> CONST, ModBlocks.BLOCKS_MAP.get(key).get());
             }
         }
     }

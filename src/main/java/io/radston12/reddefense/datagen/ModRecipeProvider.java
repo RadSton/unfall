@@ -34,6 +34,8 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
             if(!ModItems.ITEMS_MAP.containsKey(block)) continue;
             Item item = ModItems.getItem(block);
 
+            if(compressedBlock.getCraftingBlock() == null) continue;
+
             BlockCompressingRecipeBuilder.createInstance(Ingredient.of(compressedBlock.getCraftingBlock()), item, 1)
                     .unlockedBy(getHasName(compressedBlock.getCraftingBlock()), has(compressedBlock.getCraftingBlock())).
                     save(consumer, new ResourceLocation(RedDefenseMod.MOD_ID + ":compressed" + "_" + getItemName(compressedBlock.getCraftingBlock())));

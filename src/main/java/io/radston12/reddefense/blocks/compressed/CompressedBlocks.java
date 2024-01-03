@@ -352,6 +352,9 @@ public class CompressedBlocks {
     public static final RegistryObject<Block> COMPRESSED_WARPED_DOOR = getDoorCompressedBlock("warped_door", Blocks.WARPED_DOOR);
     public static final RegistryObject<Block> COMPRESSED_CRIMSON_DOOR = getDoorCompressedBlock("crimson_door", Blocks.CRIMSON_DOOR);
 
+    public static final RegistryObject<Block> COMPRESSED_OBSIDIAN_DOOR = getCustomDoorCompressedBlock("obsidian_door", Blocks.OBSIDIAN, "compressed_obsidian_door");
+
+
 
     public CompressedBlocks() {
         RedDefenseMod.LOGGER.info("Done registering compressed blocks!");
@@ -415,6 +418,10 @@ public class CompressedBlocks {
 
     private static RegistryObject<Block> getDoorCompressedBlock(String name, Block block) {
         return ModBlocks.registerUnfallBlock("compressed_" + name, () -> new CompressedDoorBlock("compressed_" + name, block));
+    }
+
+    private static RegistryObject<Block> getCustomDoorCompressedBlock(String name, Block block,String path) {
+        return ModBlocks.registerUnfallBlock("compressed_" + name, () -> new CompressedCustomDoorBlock("compressed_" + name, block, path));
     }
 
 }
