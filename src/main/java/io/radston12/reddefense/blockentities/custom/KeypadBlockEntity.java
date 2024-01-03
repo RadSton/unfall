@@ -27,9 +27,9 @@ public class KeypadBlockEntity extends OwnableBlockEntity implements MenuProvide
         super.load(tag);
     }
 
-    public void enable() {
+    public void enable(Player p) {
         if (!level.isClientSide() && getBlockState().getBlock() instanceof KeypadBlock block)
-            block.enablePower(getBlockPos(), level, getBlockState());
+            block.enablePower(getBlockPos(), level, getBlockState(), p);
     }
 
     @Override

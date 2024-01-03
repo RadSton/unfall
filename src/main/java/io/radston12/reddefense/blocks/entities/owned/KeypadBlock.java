@@ -2,6 +2,7 @@ package io.radston12.reddefense.blocks.entities.owned;
 
 import io.radston12.reddefense.blockentities.custom.BlockCompressorBlockEntity;
 import io.radston12.reddefense.blockentities.custom.KeypadBlockEntity;
+import io.radston12.reddefense.blockentities.custom.OwnableBlockEntity;
 import io.radston12.reddefense.blocks.api.OwnableBlock;
 import io.radston12.reddefense.blocks.compressed.CompressedDoorBlock;
 import io.radston12.reddefense.datagen.ModBlockStateProvider;
@@ -71,15 +72,20 @@ public class KeypadBlock extends OwnableBlock {
         return InteractionResult.sidedSuccess(true);
     }
 
-    public void enablePower(BlockPos pos, Level lvl, BlockState state) {
+    public void enablePower(BlockPos pos, Level lvl, BlockState state, Player p) {
         lvl.setBlockAndUpdate(pos, state.setValue(POWERED, true));
         lvl.updateNeighborsAt(pos, this);
 
-        for(Direction dir : Direction.values()) {
+        for (Direction dir : Direction.values()) {
             BlockState relativeBlock = lvl.getBlockState(pos.relative(dir));
-            if(relativeBlock.getBlock() instanceof CompressedDoorBlock) {
-                CompressedDoorBlock block = (CompressedDoorBlock) relativeBlock.getBlock();
-                block.setOpen(lvl, pos.relative(dir),true);
+            if (relativeBlock.getBlock() instanceof CompressedDoorBlock block) {
+
+                OwnableBlockEntity entity = (OwnableBlockEntity) lvl.getBlockEntity(pos.relative(dir));
+
+                if(entity == null) continue;
+                if (!entity.isOwner(p)) continue;
+
+                block.setOpen(lvl, pos.relative(dir), true);
             }
         }
 
@@ -91,11 +97,11 @@ public class KeypadBlock extends OwnableBlock {
         lvl.setBlockAndUpdate(pos, state.setValue(POWERED, false));
         lvl.updateNeighborsAt(pos, this);
 
-        for(Direction dir : Direction.values()) {
+        for (Direction dir : Direction.values()) {
             BlockState relativeBlock = lvl.getBlockState(pos.relative(dir));
-            if(relativeBlock.getBlock() instanceof CompressedDoorBlock) {
+            if (relativeBlock.getBlock() instanceof CompressedDoorBlock) {
                 CompressedDoorBlock block = (CompressedDoorBlock) relativeBlock.getBlock();
-                block.setOpen(lvl, pos.relative(dir),false);
+                block.setOpen(lvl, pos.relative(dir), false);
             }
         }
     }
@@ -124,6 +130,7 @@ public class KeypadBlock extends OwnableBlock {
     public BlockState mirror(BlockState state, Mirror mirror) {
         return state.rotate(mirror.getRotation(state.getValue(FACING)));
     }
+
     @Override
     protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {
         builder.add(FACING, POWERED);

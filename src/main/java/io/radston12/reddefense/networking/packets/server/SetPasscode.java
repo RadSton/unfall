@@ -57,7 +57,7 @@ public class SetPasscode {
             if(entity.isCorrect(passcode)) {
                 player.displayClientMessage(Component.translatable("block.reddefense.keypad.correct"), true);
 
-                entity.enable();
+                entity.enable(player);
 
             } else {
                 player.displayClientMessage(Component.translatable("block.reddefense.keypad.incorrect"), true);

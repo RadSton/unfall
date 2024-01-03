@@ -2,8 +2,11 @@ package io.radston12.reddefense.blocks.compressed;
 
 import io.radston12.reddefense.RedDefenseMod;
 import io.radston12.reddefense.blockentities.custom.OwnableBlockEntity;
+import io.radston12.reddefense.blocks.api.UnfallBlock;
 import io.radston12.reddefense.datagen.ModBlockStateProvider;
 import io.radston12.reddefense.datagen.interfaces.LootTableProviderData;
+import io.radston12.reddefense.networking.UnfallPacketHandler;
+import io.radston12.reddefense.networking.packets.server.OpenCustomDoorOnlyOwners;
 import net.minecraft.advancements.critereon.StatePropertiesPredicate;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -75,18 +78,11 @@ public class CompressedCustomDoorBlock extends CompressedDoorBlock {
 
     @Override
     public @NotNull InteractionResult use(@NotNull BlockState state, Level lvl, @NotNull BlockPos pos, @NotNull Player player, @NotNull InteractionHand interactionHand, @NotNull BlockHitResult hitResult) {
-        if (!lvl.isClientSide()) return InteractionResult.PASS;
+        if(!lvl.isClientSide()) return InteractionResult.sidedSuccess(lvl.isClientSide);
 
-        if (onlyOwnerCanOpen) {
-            OwnableBlockEntity entity = (OwnableBlockEntity) lvl.getBlockEntity(pos);
-            if (!entity.isOwner(player)) return InteractionResult.PASS;
+        UnfallPacketHandler.sendMessageToServer(new OpenCustomDoorOnlyOwners(pos));
 
-            cylceOpen(lvl, state, pos, player);
-
-            return InteractionResult.PASS;
-        }
-
-        return super.use(state, lvl, pos, player, interactionHand, hitResult);
+        return InteractionResult.sidedSuccess(lvl.isClientSide);
     }
 
     @Override
@@ -104,5 +100,9 @@ public class CompressedCustomDoorBlock extends CompressedDoorBlock {
     @Override
     public boolean hasTint() {
         return hasTint;
+    }
+
+    public boolean onlyOwnerCanOpen() {
+        return onlyOwnerCanOpen;
     }
 }
