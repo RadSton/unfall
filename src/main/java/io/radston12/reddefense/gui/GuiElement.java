@@ -58,6 +58,14 @@ public abstract class GuiElement {
         return offsetY + parent.getCenterY();
     }
 
+    public int getCenterX() {
+        return offsetX + parent.getCenterX() + (width / 2);
+    }
+
+    public int getCenterY() {
+        return offsetY + parent.getCenterY() + (height / 2);
+    }
+
     public int getWidth() {
         return width;
     }

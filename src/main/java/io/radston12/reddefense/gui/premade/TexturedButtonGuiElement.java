@@ -1,6 +1,7 @@
-package io.radston12.reddefense.gui;
+package io.radston12.reddefense.gui.premade;
 
 import io.radston12.reddefense.RedDefenseMod;
+import io.radston12.reddefense.gui.TwoTexturedGuiElement;
 import io.radston12.reddefense.gui.premade.handlers.ButtonCallback;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiGraphics;
@@ -9,13 +10,13 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.inventory.AbstractContainerMenu;
 import org.lwjgl.glfw.GLFW;
 
-public class ButtonGuiElement extends TwoTexturedGuiElement {
+public class TexturedButtonGuiElement extends TwoTexturedGuiElement {
 
     private final ResourceLocation buttonIcon;
     private final ButtonCallback callback;
     private final Component component;
 
-    public ButtonGuiElement(int x, int y, ResourceLocation texture, Component component,  ButtonCallback callback) {
+    public TexturedButtonGuiElement(int x, int y, ResourceLocation texture, Component component, ButtonCallback callback) {
         super(x, y, 20, 20, new ResourceLocation(RedDefenseMod.MOD_ID, "gui/elements/buttons/empty_unmarked.png"), new ResourceLocation(RedDefenseMod.MOD_ID, "gui/elements/buttons/empty_marked.png"));
 
         this.buttonIcon = texture;
